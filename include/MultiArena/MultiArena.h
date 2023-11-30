@@ -595,7 +595,7 @@ protected:
         if (numBytesNeeded > derived()->arenaSize()) // Too large request
             return nullptr;
 
-        void* result;
+        void* result = nullptr;
         _mtx.lock_shared();
         // Increment the data pointer and see if we are still within the active arena.
         // Note that the active arena can not change because of the shared lock.
