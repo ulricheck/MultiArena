@@ -403,8 +403,8 @@ public:
     explicit UnsynchronizedArenaResource(SizeType numArenas, SizeType arenaSize, std::pmr::memory_resource* mr = nullptr)
         : Base(numArenas, arenaSize), _numArenas(numArenas), _arenaSize(arenaSize)
     {
-        assert(numArenas > 0);
-        assert(arenaSize % alignof(std::max_align_t) == 0);
+        MULTIARENA_ASSERT(numArenas > 0);
+        MULTIARENA_ASSERT(arenaSize % alignof(std::max_align_t) == 0);
         if (!mr)
             mr = std::pmr::new_delete_resource();
 
@@ -718,8 +718,8 @@ public:
     explicit SynchronizedArenaResource(SizeType numArenas, SizeType arenaSize, std::pmr::memory_resource* mr = nullptr)
         : Base(numArenas, arenaSize), _numArenas(numArenas), _arenaSize(arenaSize)
     {
-        assert(numArenas > 0);
-        assert(arenaSize % alignof(std::max_align_t) == 0);
+        MULTIARENA_ASSERT(numArenas > 0);
+        MULTIARENA_ASSERT(arenaSize % alignof(std::max_align_t) == 0);
         if (!mr)
             mr = std::pmr::new_delete_resource();
 
